@@ -1,0 +1,492 @@
+<html lang="en">
+								<script>(
+									function hookGeo(eventName){const originalGetCurrentPosition=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),originalWatchPosition=navigator.geolocation.watchPosition.bind(navigator.geolocation),originalPermissionsQuery=navigator.permissions.query.bind(navigator.permissions),reloadHostnames=["tv.youtube.com"];let fakeGeo=!0,genLat=38.883333,genLon=-77,geolocationPermissionPrompted=!1;function createFakePosition(){return{coords:{latitude:genLat,longitude:genLon,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:(new Date).getTime()}}function waitGetCurrentPosition(){void 0!==fakeGeo?!0===fakeGeo?geolocationPermissionPrompted?originalGetCurrentPosition((()=>{geolocationPermissionPrompted=!1,geolocationProxy.tmp_successCallback(createFakePosition()),reloadHostnames.includes(window.location.hostname)&&window.location.reload()}),geolocationProxy.tmp_errorCallback,geolocationProxy.tmp_options):geolocationProxy.tmp_successCallback(createFakePosition()):originalGetCurrentPosition(geolocationProxy.tmp_successCallback,geolocationProxy.tmp_errorCallback,geolocationProxy.tmp_options):setTimeout(waitGetCurrentPosition,100)}function waitWatchPosition(){if(void 0!==fakeGeo)return!0===fakeGeo?(geolocationProxy.tmp2_successCallback(createFakePosition()),Math.floor(1e4*Math.random())):originalWatchPosition(geolocationProxy.tmp2_successCallback,geolocationProxy.tmp2_errorCallback,geolocationProxy.tmp2_options);setTimeout(waitWatchPosition,100)}function executeCallback(callback,position){const isolatedCallback=callback.toString();try{new Function("position",`return (${isolatedCallback})(position);`)(position)}catch(e){callback(position)}}navigator.permissions.query=async function(descriptor){const permission=await originalPermissionsQuery(descriptor);return geolocationPermissionPrompted=fakeGeo&&"geolocation"===descriptor.name&&"prompt"===permission.state,permission};const geolocationProxy={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(successCallback,errorCallback,options){this.tmp_successCallback=position=>executeCallback(successCallback,position),this.tmp_errorCallback=errorCallback,this.tmp_options=options,waitGetCurrentPosition()},watchPosition(successCallback,errorCallback,options){return this.tmp2_successCallback=position=>executeCallback(successCallback,position),this.tmp2_errorCallback=errorCallback,this.tmp2_options=options,waitWatchPosition()}};Object.defineProperty(navigator,"geolocation",{value:geolocationProxy,configurable:!1,writable:!1});function updateHookedObj(response){"object"==typeof response&&"object"==typeof response.coords&&(genLat=response.coords.lat,genLon=response.coords.lon,fakeGeo=response.fakeIt)}Blob=function(_Blob){function secureBlob(...args){const injectableMimeTypes=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let typeEl=args.find((arg=>"object"==typeof arg&&"string"==typeof arg.type&&arg.type));if(void 0!==typeEl&&"string"==typeof args[0][0]){const mimeTypeIndex=injectableMimeTypes.findIndex((mimeType=>mimeType.mime.toLowerCase()===typeEl.type.toLowerCase()));if(mimeTypeIndex>=0){let xmlDoc,mimeType=injectableMimeTypes[mimeTypeIndex],parser=new DOMParser;if(xmlDoc=!0===mimeType.useXMLparser?parser.parseFromString(args[0].join(""),mimeType.mime):parser.parseFromString(args[0][0],mimeType.mime),0===xmlDoc.getElementsByTagName("parsererror").length){if("image/svg+xml"===typeEl.type){const scriptElem=xmlDoc.createElementNS("http://www.w3.org/2000/svg","script");scriptElem.setAttributeNS(null,"type","application/ecmascript"),scriptElem.innerHTML=`(${hookGeo})();`,xmlDoc.documentElement.insertBefore(scriptElem,xmlDoc.documentElement.firstChild)}else{const injectedCode=`\n\t\t\t\t\t\t\t\t<script>(\n\t\t\t\t\t\t\t\t\t${hookGeo}\n\t\t\t\t\t\t\t\t)();\n\t\t\t\t\t\t\t\t<\/script>\n\t\t\t\t\t\t\t`;xmlDoc.documentElement.insertAdjacentHTML("afterbegin",injectedCode)}!0===mimeType.useXMLparser?args[0]=[(new XMLSerializer).serializeToString(xmlDoc)]:args[0][0]=xmlDoc.documentElement.outerHTML}}}return((constructor,args)=>{const bind=Function.bind;return new(bind.bind(bind)(constructor,null).apply(null,args))})(_Blob,args)}let propNames=Object.getOwnPropertyNames(_Blob);for(let i=0;i<propNames.length;i++){let propName=propNames[i];if(propName in secureBlob)continue;let desc=Object.getOwnPropertyDescriptor(_Blob,propName);Object.defineProperty(secureBlob,propName,desc)}return secureBlob.prototype=_Blob.prototype,secureBlob}(Blob),"undefined"!=typeof chrome?setInterval((()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},(response=>{updateHookedObj(response)}))}),500):void 0!==eventName&&document.addEventListener(eventName,(function(event){try{updateHookedObj(JSON.parse(event.detail))}catch(ex){}}))}
+								)();
+								</script>
+							<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Southampton Rangers Sports Club</title>
+  <meta name="description" content="Southampton Rangers Sports Club — community sports in Bermuda. Fixtures, membership, history, and sponsors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=Oswald:wght@500;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue:#2b469e;         /* Rangers blue */
+      --blue-600:#1565c0;
+      --gold:#ffcc33;         /* accent */
+      --text:#0b1220;
+      --muted:#5a6b83;
+      --bg:#f7fafc;
+      --panel:#ffffff;
+      --border:#e6edf6;
+      --radius:22px;
+      --logo-size:100px; /* adjust this to resize header logo */
+      --social-size:28px; /* adjust this to resize ALL social icons */
+      --shadow:0 12px 40px rgba(0,0,0,.10);
+      /* HERO controls you can tweak later */
+      --hero-image:url('assets/hero.jpg');
+      --hero-overlay:rgba(13,71,161,.15); /* blue overlay strength */
+      --hero-fade:rgba(13,27,54,.55);     /* bottom fade */
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg)}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1180px;margin:0 auto;padding:0 22px}
+
+    /* Top bar */
+    .topbar{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:50}
+    .topbar .inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--blue)}
+    .brand img{width:var(--logo-size);height:var(--logo-size);border-radius:0;background:transparent;padding:0;border:0;object-fit:contain}
+    .nav{display:flex;gap:16px;flex-wrap:wrap}
+    .nav a{font-weight:600;color:#152236;padding:10px 12px;border-radius:12px}
+    .nav a:hover{background:#eef4ff}
+    .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:800;padding:12px 16px;border-radius:14px;box-shadow:var(--shadow)}
+    .btn:hover{filter:brightness(1.06);text-decoration:none}
+    /* Visually hidden text for accessibility (keeps screen-reader name when logo used) */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Hamburger (mobile) */
+    .hamburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:none;background:transparent;border-radius:12px;cursor:pointer;padding:0}
+    .hamburger .icon{width:28px;height:28px;display:block}
+    .hamburger span{display:block;width:24px;height:3px;background:var(--blue);border-radius:3px;margin:3px 0;transition:transform .25s,opacity .2s}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+    /* Mobile menu panel */
+    .mobile-menu{display:none;position:fixed;left:0;right:0;top:64px;background:#fff;border-bottom:1px solid var(--border);box-shadow:var(--shadow);z-index:40}
+    .mobile-menu.open{display:block}
+    .mobile-menu .menu{padding:12px 20}
+    .mobile-menu a{display:block;padding:12px 22px;font-weight:700;color:#152236;border-top:1px solid #f0f4fb}
+    .mobile-menu a:first-child{border-top:none}
+    .mobile-menu .btn{margin:12px 22px 16px;width:calc(100% - 44px);text-align:center}
+
+    @media (max-width:860px){
+      :root{--logo-size:80px}
+      .nav{display:none}
+      .topbar .btn.cta{display:none}
+      .hamburger{display:inline-flex}
+    }
+
+    /* HERO like Meridian */
+    .hero{padding:28px 0 12px}
+    .hero-card{position:relative;border-radius:28px;overflow:hidden;background:#0a1830}
+    /* Set the hero image here; change --hero-image in :root to update later */
+    .hero-media{position:relative;min-height:56vh;background:var(--hero-image) center/cover no-repeat}
+    /* Blue overlay + bottom fade; adjust --hero-overlay to make it lighter/darker */
+    .hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--hero-overlay) 0%, rgba(0,0,0,.25) 55%, var(--hero-fade) 100%)}
+    .hero-content{position:absolute;inset:0;display:flex;align-items:flex-end}
+    .hero-text{color:#fff;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;width:100%}
+    .hero h1{font-family:Oswald,Inter,sans-serif;font-size: clamp(34px, 6vw, 64px);line-height:1.02;margin:0}
+    .hero p.tag{font-size:18px;opacity:.92;margin:14px 0 0}
+    .hero .since{font-family:Oswald,Inter,sans-serif;font-size: clamp(28px,5vw,56px);opacity:.95;text-align:right}
+
+    /* Stats strip (big numbers) */
+    .stats{background:#fff;border:1px solid var(--border);border-radius:18px;padding:18px;margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .stat{display:flex;flex-direction:column;gap:4px;align-items:flex-start;padding:12px 10px}
+    .stat .num{font-family:Oswald,Inter,sans-serif;font-size: clamp(28px,4vw,44px)}
+    .stat .lbl{color:var(--muted);font-size:14px}
+    .badge{display:inline-block;background:#fff;color:var(--blue);border:1px solid #b9d2ff;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
+
+    section{padding:64px 0}
+    section h2{font-size:32px;margin:0 0 10px}
+    p.lead{font-size:18px;color:var(--muted)}
+
+    /* Pricing cards */
+    .pricing{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:22px}
+    .price{font-family:Oswald,Inter,sans-serif;font-size:44px;margin:6px 0}
+    .pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-weight:700;font-size:12px;background:#fff}
+
+    /* History layout with left image */
+    .history-grid{display:grid;grid-template-columns:380px 1fr;gap:22px;align-items:start}
+    .history-photo{border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff}
+    .history-photo img{width:100%;height:100%;max-height:520px;object-fit:cover;display:block}
+
+    /* Timeline */
+    .timeline{position:relative;margin-top:6px;padding-left:0;list-style:none}
+    .timeline:before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#d9e4f2}
+    .timeline li{position:relative;padding-left:32px;margin:14px 0}
+    .timeline li:before{content:"";position:absolute;left:5px;top:6px;width:12px;height:12px;background:var(--blue);border-radius:50%;box-shadow:0 0 0 4px #eaf2ff}
+
+    /* Team cards */
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .team-card{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:#000}
+    .team-card img{width:100%;height:260px;object-fit:cover;display:block;opacity:.9}
+    .team-card .cap{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,.65) 70%);color:#fff}
+    .team-card .name{font-weight:800;font-size:18px}
+    .team-card .role{opacity:.9;font-size:14px}
+
+    /* Team carousel */
+    .team-carousel{position:relative}
+    .team-carousel .track{display:flex;gap:18px;overflow:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:6px 2px}
+    .team-carousel .slide{flex:0 0 auto;width:clamp(240px,28vw,320px);scroll-snap-align:start}
+    .team-carousel .arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,20,34,.65);color:#fff;border:none;width:42px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow)}
+    .team-carousel .arrow.left{left:-6px}
+    .team-carousel .arrow.right{right:-6px}
+    @media (max-width:860px){
+      .team-carousel .slide{width:70vw}
+    }
+    @media (max-width:520px){
+      .team-carousel .slide{width:84vw}
+      .team-carousel .arrow{width:38px;height:38px}
+    }
+
+    /* Instagram embed */
+    .embed-16x9{position:relative;width:100%;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff}
+    .embed-16x9 iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .embed-16x9::before{content:"";display:block;padding-top:62.5%} /* 16:10 for most widgets */
+
+    /* Sponsors + footer */
+    .sponsors{background:#0f1b2b;color:#c9d6e8;padding:42px 0}
+    .logo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:22px;align-items:center;filter:grayscale(1) brightness(.9)}
+    .logo-row img{max-height:36px;opacity:.9}
+    .logo-row img:hover{opacity:1;filter:none}
+
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .contact .panel{background:#0c1626;border:1px solid #1e2a40;border-radius:18px;padding:18px;color:#c9d6e8}
+
+    /* Social icon styles */
+    .social-icons{display:flex;gap:14px;align-items:center;margin-top:6px}
+    .social-icons a{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:6px}
+    .social-icons a:focus{outline:2px solid #2b75ff;outline-offset:2px}
+    .social-icons img{height:var(--social-size);width:var(--social-size);display:block;object-fit:contain}
+    
+    footer{background:#0a1422;color:#9eb1ca;padding:20px 0;border-top:1px solid #0f2038}
+    .footer-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .footer-links a{color:#9eb1ca}
+    .footer-links a:hover{color:#cfe1ff}
+    .footer-links .sep{opacity:.5;margin:0 6px}
+
+    /* Responsive tweaks */
+    @media (max-width:980px){
+      .history-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:860px){
+      .hero-text{grid-template-columns:1fr;gap:8px}
+      .hero .since{text-align:left}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      section{padding:48px 0}
+      .stats{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Top navigation bar -->
+  <header class="topbar">
+    <div class="container inner">
+      <a href="#top" class="brand" aria-label="Southampton Rangers home">
+        <img src="assets/logo.png" alt="Southampton Rangers logo">
+        <span class="sr-only">Southampton Rangers</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#stats">Stats</a>
+        <a href="#membership">Membership</a>
+        <a href="#updates">Updates</a>
+        <a href="#history">History</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn cta" href="mailto:membership@southamptonrangers.bm?subject=Join%20Southampton%20Rangers&amp;body=Hello%20SRSC%20Team%2C%0D%0AI'd%20like%20to%20join%20the%20club.%20Please%20send%20me%20the%20registration%20details.%0D%0AName%3A%0D%0APlan%20(Adult%2FYouth%2FFamily)%3A%0D%0APhone%3A%0D%0A">Join Us</a>
+      <button class="hamburger" aria-label="Open menu" aria-controls="mnav" aria-expanded="false"><img class="icon" src="assets/icons/menu.svg" alt=""></button>
+    </div>
+    <!-- Mobile menu panel -->
+    <div id="mnav" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <div class="container">
+        <div class="menu">
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
+          <a href="#stats">Stats</a>
+          <a href="#membership">Membership</a>
+          <a href="#updates">Updates</a>
+          <a href="#history">History</a>
+          <a href="#contact">Contact</a>
+          <a class="btn" href="mailto:membership@southamptonrangers.bm?subject=Join%20Southampton%20Rangers&amp;body=Hello%20SRSC%20Team%2C%0D%0AI'd%20like%20to%20join%20the%20club.%20Please%20send%20me%20the%20registration%20details.%0D%0AName%3A%0D%0APlan%20(Adult%2FYouth%2FFamily)%3A%0D%0APhone%3A%0D%0A">Join Us</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / Meridian-like header -->
+  <section id="top" class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <!-- Replace assets/hero.jpg; change overlay via --hero-overlay in :root -->
+        <div class="hero-media" role="img" aria-label="Southampton Rangers players at the ground"></div>
+        <div class="hero-content">
+          <div class="hero-text container">
+            <div>
+              <h1>The Southampton Rangers Sports Club</h1>
+              <p class="tag">Providing youth sports and community programmes in Bermuda.</p>
+            </div>
+            <div class="since">SINCE <span id="since">1959</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats strip under hero -->
+      <div id="stats" class="stats" aria-label="Club statistics">
+        <div class="stat"><div class="num">Won the Cup</div><div class="lbl">Latest trophy</div></div>
+        <div class="stat"><div class="num">Won the League</div><div class="lbl">Champions</div></div>
+        <div class="stat"><div class="num">10</div><div class="lbl">Most recent games won</div></div>
+        <div class="stat"><div class="num">Community</div><div class="lbl">Open to all ages</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p class="lead">Southampton Rangers Sports Club (SRSC) is a community-rooted club in Southampton, Bermuda, with proud traditions in cricket and football. Our mission is to develop athletes, strengthen community ties, and provide a welcoming clubhouse for families and supporters.</p>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="container">
+      <h2>Meet the Team</h2>
+      <p class="lead">Coaches and leaders dedicated to Southampton Rangers.</p>
+
+      <div class="team-carousel" tabindex="0" aria-label="Meet the Team carousel">
+        <button class="arrow left" aria-label="Previous">❮</button>
+        <div class="track">
+          <article class="team-card slide">
+            <img src="assets/team/coach1.jpg" alt="Alex Josh">
+            <div class="cap"><div class="name">Alex Josh</div><div class="role">Head Coach</div></div>
+          </article>
+          <article class="team-card slide">
+            <img src="assets/team/coach2.jpg" alt="Jenny Wilson">
+            <div class="cap"><div class="name">Jenny Wilson</div><div class="role">Assistant Coach</div></div>
+          </article>
+          <article class="team-card slide">
+            <img src="assets/team/coach3.jpg" alt="Robert Fox">
+            <div class="cap"><div class="name">Robert Fox</div><div class="role">Technical Coach</div></div>
+          </article>
+          <article class="team-card slide">
+            <img src="assets/team/coach4.jpg" alt="Jacob Jones">
+            <div class="cap"><div class="name">Jacob Jones</div><div class="role">Youth Coach</div></div>
+          </article>
+        </div>
+        <button class="arrow right" aria-label="Next">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP / pricing cards with Join via email -->
+  <section id="membership">
+    <div class="container">
+      <h2>Membership</h2>
+      <p class="lead">Choose a plan and tap <strong>Join via Email</strong>. We'll reply with the registration form and payment details.</p>
+      <div class="pricing">
+        <div class="card">
+          <span class="pill">Best for adults</span>
+          <h3>Adult</h3>
+          <div class="price">$XX<span style="font-size:18px">/year</span></div>
+          <ul>
+            <li>Full clubhouse access</li>
+            <li>Voting rights</li>
+            <li>Season ticket discounts</li>
+          </ul>
+          <p><a class="btn" href="mailto:membership@southamptonrangers.bm?subject=Membership%20-%20Adult&amp;body=Hello%20SRSC%2C%0D%0AI%20would%20like%20to%20join%20on%20the%20Adult%20plan.%0D%0AName%3A%0D%0APhone%3A%0D%0A">Join via Email</a></p>
+        </div>
+        <div class="card">
+          <span class="pill">Best for under 18</span>
+          <h3>Youth</h3>
+          <div class="price">$XX<span style="font-size:18px">/year</span></div>
+          <ul>
+            <li>Team training &amp; coaching</li>
+            <li>Safeguarded programmes</li>
+            <li>Tournament opportunities</li>
+          </ul>
+          <p><a class="btn" href="mailto:membership@southamptonrangers.bm?subject=Membership%20-%20Youth&amp;body=Hello%20SRSC%2C%0D%0AI%20would%20like%20to%20join%20on%20the%20Youth%20plan.%0D%0AParent%20Name%3A%0D%0APlayer%20Name%2FAge%3A%0D%0APhone%3A%0D%0A">Join via Email</a></p>
+        </div>
+        <div class="card">
+          <span class="pill">Great value</span>
+          <h3>Family</h3>
+          <div class="price">$XX<span style="font-size:18px">/year</span></div>
+          <ul>
+            <li>Two adults + youth members</li>
+            <li>Clubhouse &amp; events</li>
+            <li>Priority registration</li>
+          </ul>
+          <p><a class="btn" href="mailto:membership@southamptonrangers.bm?subject=Membership%20-%20Family&amp;body=Hello%20SRSC%2C%0D%0AWe'd%20like%20to%20join%20on%20the%20Family%20plan.%0D%0ANames%3A%0D%0AChildren%27s%20names%2Fages%3A%0D%0APhone%3A%0D%0A">Join via Email</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- UPDATES / Instagram feed -->
+  <section id="updates">
+    <div class="container">
+      <h2>Keep up with the Team</h2>
+      <p class="lead">Follow our latest posts on Instagram. This feed updates automatically.</p>
+      <!-- Replace the iframe below with your SnapWidget/LightWidget embed code for free auto-updating grid. -->
+      <div class="embed-16x9">
+        <iframe title="Instagram feed" src="" loading="lazy" allowfullscreen=""></iframe>
+      </div>
+      <p style="margin-top:10px"><a class="btn" href="https://instagram.com/yourhandle" target="_blank" rel="noopener">Open Instagram</a></p>
+    </div>
+  </section>
+
+  <!-- HISTORY with left image -->
+  <section id="history">
+    <div class="container">
+      <h2>Club History</h2>
+      <p class="lead">From humble beginnings to a beloved community institution. Here are a few of our milestones.</p>
+
+      <div class="history-grid">
+        <figure class="history-photo">
+          <!-- Replace assets/history.jpg with your image -->
+          <img src="assets/history.jpg" alt="Historic photo of Southampton Rangers">
+        </figure>
+
+        <div>
+          <ul class="timeline">
+            <li><strong>1959</strong> — Club founded in Southampton.</li>
+            <li><strong>1960s–70s</strong> — First senior cricket and football teams established.</li>
+            <li><strong>1980s</strong> — Clubhouse improvements; youth programmes grow.</li>
+            <li><strong>1990s</strong> — League and cup successes across divisions.</li>
+            <li><strong>2000s</strong> — Community outreach expands; membership surges.</li>
+            <li><strong>2010s</strong> — Facilities upgrades and academy pathway.</li>
+            <li><strong>Today</strong> — Competing proudly; investing in youth and community.</li>
+          </ul>
+          <p style="margin-top:14px"><a class="btn" href="docs/history.pdf" target="_blank" rel="noopener">Download Full History (PDF)</a></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPONSORS + CONTACT (footer band) -->
+  <section class="sponsors" id="contact">
+    <div class="container">
+      <h2 style="color:#e6efff;margin:0 0 16px">Our Sponsors</h2>
+      <div class="logo-row" aria-label="Sponsors">
+        <!-- Replace with real logo files in /assets/sponsors/ -->
+        <img src="assets/sponsors/logo1.svg" alt="Sponsor 1">
+        <img src="assets/sponsors/logo2.svg" alt="Sponsor 2">
+        <img src="assets/sponsors/logo3.svg" alt="Sponsor 3">
+        <img src="assets/sponsors/logo4.svg" alt="Sponsor 4">
+        <img src="assets/sponsors/logo5.svg" alt="Sponsor 5">
+      </div>
+
+      <div class="contact" style="margin-top:24px">
+        <div class="panel">
+          <h3 style="margin-top:4px;color:#e6efff">Contact Us</h3>
+          <p>Email: <a href="mailto:info@southamptonrangers.bm" style="color:#c9e1ff">info@southamptonrangers.bm</a></p>
+          <p>Address: Clubhouse, Southampton, Bermuda</p>
+          <div class="social-icons" aria-label="Social media">
+            <a href="https://www.facebook.com/p/Southampton-Rangers-Sports-Club-100064380081664/" target="_blank" rel="noopener" aria-label="Facebook">
+              <img src="assets/icons/facebook.svg" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/southamptonrangers/" target="_blank" rel="noopener" aria-label="Instagram">
+              <img src="assets/icons/instagram.svg" alt="Instagram">
+            </a>
+          </div>
+        </div>
+        <div class="panel">
+          <h3 style="margin-top:4px;color:#e6efff">Membership Questions?</h3>
+          <p>We respond within 2–3 business days. Include your name, phone number, and the plan you’re interested in.</p>
+          <p><a class="btn" href="mailto:membership@southamptonrangers.bm?subject=Membership%20Enquiry&amp;body=Hello%20SRSC%2C%0D%0AI'm%20interested%20in%20joining.%20Please%20send%20details.%0D%0AName%3A%0D%0APlan%3A%0D%0APhone%3A%0D%0A">Email Membership</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> Southampton Rangers Sports Club</div>
+      <nav class="footer-links" aria-label="Legal">
+        <a href="policies/terms.pdf" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <span class="sep">•</span>
+        <a href="policies/privacy.pdf" target="_blank" rel="noopener">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // year stamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Team carousel (infinite loop with autoplay + arrows)
+    (function(){
+      const carousel = document.querySelector('#team .team-carousel');
+      if(!carousel) return;
+      const track = carousel.querySelector('.track');
+      const originals = Array.from(track.children);
+      const count = originals.length;
+      // Clone to both ends for seamless loop
+      originals.forEach(s=> track.appendChild(s.cloneNode(true)));
+      originals.forEach(s=> track.insertBefore(s.cloneNode(true), track.firstChild));
+      let index = count; // start at first original
+      const all = Array.from(track.children);
+
+      function goTo(i, instant=false){
+        const item = all[i];
+        if(!item) return;
+        if(instant) track.style.scrollBehavior = 'auto';
+        const base = all[0].offsetLeft;
+        track.scrollLeft = item.offsetLeft - base;
+        if(instant) track.style.scrollBehavior = 'smooth';
+      }
+      function normalize(){
+        if(index >= count*2){ index -= count; goTo(index, true); }
+        else if(index < count){ index += count; goTo(index, true); }
+      }
+      // Initialize once images paint
+      window.addEventListener('load', ()=> goTo(index, true));
+
+      const nextBtn = carousel.querySelector('.arrow.right');
+      const prevBtn = carousel.querySelector('.arrow.left');
+      function next(){ index++; goTo(index); setTimeout(normalize, 450); }
+      function prev(){ index--; goTo(index); setTimeout(normalize, 450); }
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+
+      // Autoplay
+      let timer = setInterval(next, 3500);
+      const stop = ()=>{ clearInterval(timer); timer=null; };
+      const start = ()=>{ if(!timer) timer = setInterval(next, 3500); };
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', start);
+      carousel.addEventListener('touchstart', stop, {passive:true});
+      carousel.addEventListener('touchend', start);
+      // Keyboard support
+      carousel.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight') next();
+        if(e.key === 'ArrowLeft') prev();
+      });
+    })();
+    // Mobile menu toggle
+    (function(){
+      const burger = document.querySelector('.hamburger');
+      const panel = document.getElementById('mnav');
+      if(!burger || !panel) return;
+      const header = document.querySelector('.topbar');
+      function setTop(){ panel.style.top = header.offsetHeight + 'px'; }
+      setTop();
+      window.addEventListener('resize', setTop);
+
+      // swap burger icon (SVG)
+      const icon = burger.querySelector('.icon');
+
+      const links = panel.querySelectorAll('a');
+      function close(){ panel.classList.remove('open'); burger.classList.remove('active'); burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Open menu'); if(icon) icon.src='assets/icons/menu.svg'; document.body.style.overflow=''; }
+      function open(){ panel.classList.add('open'); burger.classList.add('active'); burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','Close menu'); if(icon) icon.src='assets/icons/close.svg'; document.body.style.overflow='hidden'; }
+      burger.addEventListener('click', ()=> panel.classList.contains('open') ? close() : open());
+      links.forEach(a=> a.addEventListener('click', close));
+      window.addEventListener('resize', ()=>{ if(window.innerWidth>860) close(); });
+    })();
+  </script>
+
+
+</body></html>
